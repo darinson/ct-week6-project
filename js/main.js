@@ -45,9 +45,13 @@ const tempConvHTML = (temp, unit) => {
 
 const timeConvHTML = (time, timeshift) => {
     let localTime = time + timeshift;
-    const myDate = new Date(localTime * 1000)
+    const myDate = new Date(localTime * 1000) // the time is given to us in seconds
     return (myDate.toUTCString().split(" ")[4].split(/:[0-9]{2}$/)[0])
+}
 
+const localTimeHTML = (time) => {
+    const localTime = new Date(time * 1000); //Date converts the UTC time into computer's local time
+    return localTime.toString();
 }
 
 // Combine Data Functions for Button
@@ -57,6 +61,7 @@ const loadData = async () => {
     const city = weatherInfo[`name`];
     const country = weatherInfo['sys']['country'];
     const timeshift = weatherInfo['timezone'];
+    const updatetime = localTimeHTML(weatherInfo[`dt`]);
     const sunrise = timeConvHTML(weatherInfo['sys']['sunrise'], timeshift);
     const sunset = timeConvHTML(weatherInfo['sys']['sunset'], timeshift);
     const tempmain = weatherInfo['main']['temp'];
@@ -66,6 +71,7 @@ const loadData = async () => {
     const weathermain = weatherInfo['weather'][0]['main'];
     const weatherdesc = weatherInfo['weather'][0]['description'];
     const hum = weatherInfo['main']['humidity'];
+    document.querySelector(`#update-time`).innerHTML = `Last updated: ${updatetime}`
     document.querySelector(`#location`).innerHTML = `${city}, ${country}`
     document.querySelector(`#suntimes`).innerHTML = `sunrise ${sunrise} | sunset ${sunset}`
     document.querySelector(`#tempmain`).innerHTML = tempConvHTML(tempmain, unit)
