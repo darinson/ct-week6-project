@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Week 6 Project</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 py-5">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">Welcome to the weather app!
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <span>
+                    <!-- <img src="css/images/favicon-32x32.png" style="width: 100%; max-width:32px; margin-right: 15px;"> -->
+                    <a href="index.html" class="navbar-brand d-flex">
+                        <strong>Weather App</strong>
+                    </a>
+                </span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- The Weather App -->
+    <main class="container-fluid pt-5 pb-5">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-6 col-sm-10 col-xs-10">
+                <!-- The Form -->
+                <form class="form row pb-3" style="margin: auto" name="ask-city" id="ask-city-form">
+                    <div class="form-group mt-1 mb-1">
+                        <input type="text" name="city" id="city" class="form-control" required>
+                        <label class="ml-3 form-control-placeholder" for="city">City</label>
+
+                    </div>
+                    <button class="next-button text-center mt-1 ml-1" Onclick="loadData()"> <span
+                            class="fa fa-arrow-right"></span>
+                    </button>
+                </form>
+                <!-- The Weather Info -->
+                <div class="card p-4">
+                    <div class="d-flex">
+                        <h6 class="flex-grow-1 text-center" id="location">CITY, COUNTRY</h6>
+                    </div>
+                    <div class="d-flex">
+                        <h6 class="flex-grow-1 text-center" id="suntimes">sunrise 00:00 | sunset 00:00</h6>
+                    </div>
+                    <div class="d-flex flex-column temp mt-4 mb-3">
+                        <h1 class="mb-0 font-weight-bold" id="tempmain"> 13° C </h1>
+                        <span class="small grey" id="tempfeel">Feels like: 10° C</span>
+                        <span class="small grey" id="temprange">Temp Max 60° C | Temp Min 10° C</span>
+                    </div>
+                    <div class="d-flex flex-column temp mt-1 mb-3">
+                        <h1 class="mb-0 font-weight-bold" id="weather-main">Forecast</h1>
+                        <span class="small grey" id="weather-desc">Description</span>
+                        <span class="small grey" id="humidity">Humidity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- The Footer -->
+    <footer class="footer bg-dark text-center">
+        <div class="container pt-5 pb-5">
+            <span class="text-muted">Weather API - Coding Temple Week 6 Project
+                - Darin Son
+                <br><br>Website Template Modified From Getbootstrap.com
+                <br>Form Bar Modified From <a
+                    href="https://bbbootstrap.com/snippets/multi-step-form-vertical-progressbar-and-floating-label-41789662"
+                    style="text-decoration: underline; color: inherit">Omkar
+                    Bailkeri</a>, bbbootstrap.com
+                <br>Weather Info Template Modified From <a
+                    href="https://bbbootstrap.com/snippets/bootstrap-weather-info-template-19939290"
+                    style="text-decoration: underline; color: inherit">Aditi Gupta</a>,
+                bbbootstrap.com</span>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
