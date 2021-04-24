@@ -32,7 +32,10 @@ const tempConvHTML = (temp, unit) => {
 }
 
 const timeConvHTML = (time, timeshift) => {
-    let localTime = time + timeshift
+    let localTime = time + timeshift;
+    const myDate = new Date(localTime * 1000)
+    return (myDate.toUTCString().split(" ")[4].split(/:[0-9]{2}$/)[0])
+
 }
 
 // Combine Data Functions for Button
@@ -40,9 +43,9 @@ const loadData = async () => {
     const weatherInfo = await getData();
     const city = weatherInfo[`name`];
     const country = weatherInfo['sys']['country'];
-    const timeshift = weatherInfo['timezone']
-    const sunrise = weatherInfo['sys']['sunrise'];
-    const sunset = weatherInfo['sys']['sunset'];
+    const timeshift = weatherInfo['timezone'];
+    const sunrise = timeConvHTML(weatherInfo['sys']['sunrise'], timeshift);
+    const sunset = timeConvHTML(weatherInfo['sys']['sunset'], timeshift);
     const tempmain = weatherInfo['main']['temp'];
     const tempfeel = weatherInfo['main']['feels_like'];
     const tempmin = weatherInfo['main']['temp_min'];
@@ -52,11 +55,11 @@ const loadData = async () => {
     const hum = weatherInfo['main']['humidity'];
     let unit = 'F'
     document.querySelector(`#location`).innerHTML = `${city}, ${country}`
-    document.querySelector(`#suntimes`).innerHTML = `sunrise ${sunrise} a.m. | sunset ${sunset} p.m.`
+    document.querySelector(`#suntimes`).innerHTML = `sunrise ${sunrise} | sunset ${sunset}`
     document.querySelector(`#tempmain`).innerHTML = tempConvHTML(tempmain, unit)
     document.querySelector(`#tempfeel`).innerHTML = `Feels like: ${tempConvHTML(tempfeel, unit)}`
     document.querySelector(`#temprange`).innerHTML = `Max ${tempConvHTML(tempmax, unit)} | Min ${tempConvHTML(tempmin, unit)}`
     document.querySelector(`#weather-main`).innerHTML = `${weathermain}`
     document.querySelector(`#weather-desc`).innerHTML = `${weatherdesc}`
-    document.querySelector(`#humidity`).innerHTML = `&#128167; ${hum} %`
+    document.querySelector(`#humidity`).innerHTML = `&#128167; ${hum} % humidity`
 }
