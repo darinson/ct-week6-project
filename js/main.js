@@ -20,6 +20,18 @@ const getData = async () => {
     return response.data
 }
 
+const getTempUnit = async () => {
+    const tempUnits = document.querySelectorAll('#temp-unit');
+    let selectedUnit;
+    for (const tU of tempUnits) {
+        if (tU.checked) {
+            selectedUnit = tU;
+            break;
+        }
+    }
+    return selectedUnit.value
+}
+
 // Format Data
 const tempConvHTML = (temp, unit) => {
     if (unit == "F") {
@@ -41,6 +53,7 @@ const timeConvHTML = (time, timeshift) => {
 // Combine Data Functions for Button
 const loadData = async () => {
     const weatherInfo = await getData();
+    const unit = await getTempUnit();
     const city = weatherInfo[`name`];
     const country = weatherInfo['sys']['country'];
     const timeshift = weatherInfo['timezone'];
@@ -53,7 +66,6 @@ const loadData = async () => {
     const weathermain = weatherInfo['weather'][0]['main'];
     const weatherdesc = weatherInfo['weather'][0]['description'];
     const hum = weatherInfo['main']['humidity'];
-    let unit = 'F'
     document.querySelector(`#location`).innerHTML = `${city}, ${country}`
     document.querySelector(`#suntimes`).innerHTML = `sunrise ${sunrise} | sunset ${sunset}`
     document.querySelector(`#tempmain`).innerHTML = tempConvHTML(tempmain, unit)
