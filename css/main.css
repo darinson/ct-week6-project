@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap');
 
 html,
 body {
@@ -11,7 +11,7 @@ body {
 }
 
 main {
-    background-color: gray;
+    background-color: rgb(19, 137, 177);
     place-items: center
 }
 
@@ -34,22 +34,23 @@ main {
     font-size: 100%;
     top: 10px;
     transform: translate3d(0, -100%, 0);
-    background-color: gray;
+    background-color: rgb(19, 137, 177);
+    color: white;
     opacity: 1;
 }
 
 .next-button {
     width: 25%;
     height: 50px;
-    background-color: #BDBDBD;
+    background-color: gray;
     color: #fff;
-    border-radius: 6px;
+    border-radius: 4px;
     padding: 10px;
     cursor: pointer
 }
 
 .next-button:hover {
-    background-color: lightblue;
+    background-color: rgb(177, 233, 252);
     color: #fff
 }
 
@@ -57,14 +58,9 @@ main {
 .card {
     background-color: #ffffff;
     border-radius: 50px;
-    color: #6f707d;
-    font-family: 'Marcellus', serif
-}
+    color: #1a1a20;
+    font-family: 'Chakra Petch', sans-serif;}
 
-#heading {
-    font-size: 80px;
-    color: #2b304d
-}
 
 .temp {
     place-items: center
@@ -72,12 +68,8 @@ main {
 
 .temp-details>p>span,
 .grey {
-    color: #a3acc1;
+    color: #7c7d80;
     font-size: 20px
-}
-
-.fa {
-    color: #a5a5b1
 }
 
 *:focus {
