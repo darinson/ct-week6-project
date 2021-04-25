@@ -7,7 +7,7 @@ form.addEventListener('submit', (event) => {
 // Extract Data
 const getData = async () => {
     // My API Key
-    const apiKey = `3e58c34b7084de1bc0cb498c0eb6bdc0`;
+    const apiKey = `7b3793dfca1d6ec1817190dad40f38d7`;
     let cityName = document.querySelector('#city').value;
     const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
     let response = await axios.get(url)
